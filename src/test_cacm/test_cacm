@@ -1,0 +1,114 @@
+#! /bin/tcsh
+
+set bin = /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/bin
+set current = $cwd
+set database = $current/indexed
+
+#########################################################################
+# Make the adi test collection
+#########################################################################
+./make_cacm
+
+echo "collection made"
+
+/bin/rm -rf test
+mkdir test
+cd test
+
+# Function to generate weight strings for tf and idf
+set tf_weights = ("nnn" "nnc" "ntc" "ntn" "lnn" "ltn" "ltc" "lnc" "bnn" "btc" "btn" "bnc" "atc" "atn" "anc" "ann")
+
+# Function to generate all combinations
+foreach query_weight ($tf_weights)
+  foreach doc_weight ($tf_weights)
+    cat > "spec.${doc_weight}.${query_weight}" << EOF
+include_file $database/spec
+query_file query.${query_weight}
+doc_file doc.${doc_weight}
+inv_file inv.${doc_weight}
+tr_file ./tr.${doc_weight}.${query_weight}
+rr_file ./rr.${doc_weight}.${query_weight}
+run_name "Query weight == ${query_weight}, Doc weight == ${doc_weight}"
+EOF
+
+    # Perform the retrieval run
+    $bin/smart retrieve "spec.${doc_weight}.${query_weight}"
+    echo "retrieval run ${doc_weight}.${query_weight} done"
+  end
+end
+
+echo "All retrieval runs completed"
+
+# Generate interactive test commands for each combination
+foreach query_weight ($tf_weights)
+  foreach doc_weight ($tf_weights)
+    # Test 1
+    cat > "test.commands.${doc_weight}.${query_weight}.1" << EOF
+run
+information retrieval and clustering
+.
+3
+save ./save.${doc_weight}.${query_weight}.1
+EOF
+
+    # Test 2
+    cat > "test.commands.${doc_weight}.${query_weight}.2" << EOF
+run
+information retrieval and clustering
+.
+Qvec
+more
+55
+Qv
+feedback 55
+Qv
+Top
+save ./save.${doc_weight}.${query_weight}.2
+Dtext 73
+save
+Dvec 73
+Qsim 73
+Qmatch 73
+Drun 73
+Dsim 73 55
+Qsim 55
+Dmatch 73 55
+EOF
+
+    # Test 3
+    cat > "test.commands.${doc_weight}.${query_weight}.3" << EOF
+Elist
+Eeval_rr
+Eeval_tr
+Ercl_prn
+Eind_rr
+Eind_tr
+El
+Euse 0
+Eqid 2
+Etr
+Qv
+Qm 12
+s save.${doc_weight}.${query_weight}.3
+Euse 1
+Eqid 2
+Qm 12
+s
+EOF
+
+    foreach i (1 2 3)
+        $bin/smart top.inter "spec.${doc_weight}.${query_weight}" spec_list "spec.${doc_weight}.${query_weight}" \
+              < "test.commands.${doc_weight}.${query_weight}.$i" > "out.${doc_weight}.${query_weight}.$i"
+        diff ../test.good/out.${doc_weight}.${query_weight}.$i out.${doc_weight}.${query_weight}.$i >> out.final
+        diff ../test.good/save.${doc_weight}.${query_weight}.$i save.${doc_weight}.${query_weight}.$i >> out.final
+        echo "interactive comparison ${doc_weight}.${query_weight} $i done"
+    end
+  end
+end
+
+if (-z out.final) then
+    echo "No differences at all detected"
+else
+    echo "The following differences detected"
+    more out.final
+endif

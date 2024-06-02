@@ -1,0 +1,7 @@
+include_file /mnt/c/users/airat/downloads/smart.exp/smart.exp/src/test_cacm/indexed/spec
+query_file query.atc
+doc_file doc.anc
+inv_file inv.anc
+tr_file ./tr.anc.atc
+rr_file ./rr.anc.atc
+run_name "Query weight == atc, Doc weight == anc"

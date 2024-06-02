@@ -1,0 +1,7 @@
+include_file /mnt/c/users/airat/downloads/smart.exp/smart.exp/src/test_cacm/indexed/spec
+query_file query.bnc
+doc_file doc.btn
+inv_file inv.btn
+tr_file ./tr.btn.bnc
+rr_file ./rr.btn.bnc
+run_name "Query weight == bnc, Doc weight == btn"

@@ -1,0 +1,238 @@
+titles    : Show list of titles retrieved for this query again
+next      : Show the next ranked document (default action)
+<did>     : Show document <did>
+.         : Show the current document again
+more      : Retrieve more documents for this query, using only original query
+run       : Run new query.  Retrieve documents after getting a new query.
+feedback <usefuldoc1> <usefuldoc2> ...: Retrieve more documents for this query,
+            using original query plus the given list of useful documents
+quit      : Quit SMART. Any designated actions are done
+xit       : Exit SMART. No designated actions are done
+save file : Append copy of output of last command to the named file
+?         : Display this help message
+help      : Display this help message
+advanced  : Display help message describing other advanced options
+experimental: Display help message for examining experimental results
+
+Smart (ntq?): Please type a new query, consisting of descriptive natural language words
+and phrases, ending with a line of a single '.'
+An empty query will exit SMART.
+
+-------------------------
+run 
+----
+Num  Action Sim Title
+  3134     6.03 The Use of Normal Multiplication Tables for Information Storage
+  1699     5.87 Experimental Evaluation of Information Retrieval Through a Tele
+  1681     5.33 Easy English,a Language for Information Retrieval Through a Rem
+  2288     5.30 File Organization: The Consecutive Retrieval Property 
+  1032     5.22 Theoretical Considerations in Information Retrieval Systems 
+  2307     5.20 Dynamic Document Processing 
+  1457     5.00 Data Manipulation and Programming Problems in Automatic Informa
+   891     5.00 Everyman's Information Retrieval System 
+  2561     4.79 A Heuristic Approach to Inductive Inference in Fact Retrieval S
+  2990     4.71 Effective Information Retrieval Using Term Accuracy 
+  2631     4.71 An Information-Theoretic Approach to Text Searching in Direct A
+  1927     4.64 Information Science in a Ph.D. Computer Science Program 
+  2451     4.39 Design of Tree Structures for Efficient Querying 
+  2516     4.20 Hierarchical Storage in Information Retrieval 
+  2882     4.08 A Stochastic Evaluation Model for Database Organization in Data
+
+Smart (ntq?): 
+-------------------------
+Qvec 
+----
+Query vector 1
+Docid	Ctype	Con	Weight		Token
+1	0	2239	 1.00000	clust
+1	0	4988	 1.00000	inform
+1	0	11065	 1.00000	retrief
+
+Smart (ntq?): 
+-------------------------
+more 
+----
+Num  Action Sim Title
+  1725     3.95 A Simple Proof of Lewin's Ordered-Retrieval Theorem for Associa
+  3012     3.79 The Use of an Interactive Information Storage and Retrieval Sys
+  2722     3.79 Multidimensional Binary Search Trees Used for Associative Searc
+  2519     3.79 On the Problem of Communicating Complex Information 
+  2278     3.79 On Foster's Information Storage and Retrieval Using AVL Trees 
+  1527     3.79 A Grammar Base Question Answering Procedure 
+  2991     3.69 Improving the Access Time for Random Access Files 
+  2484     3.61 A Note on Information Organization and Storage 
+  2140     3.61 Retrieval-Update Speed Tradeoffs Using Combined Indices 
+  1976     3.61 Multi-attribute Retrieval with Combined Indexes 
+  1652     3.61 A Code for Non-numeric Information Processing Applications in O
+  2846     3.39 Compressed Tries 
+  2455     3.39 A Generalization of AVL Trees 
+  2160     3.39 Canonical Structure in Attribute Based File Organization 
+  1935     3.39 Randomized Binary Search Technique 
+
+Previously retrieved docs from iteration 0
+  3134     6.03 The Use of Normal Multiplication Tables for Information Storage
+  1699     5.87 Experimental Evaluation of Information Retrieval Through a Tele
+  1681     5.33 Easy English,a Language for Information Retrieval Through a Rem
+  2288     5.30 File Organization: The Consecutive Retrieval Property 
+  1032     5.22 Theoretical Considerations in Information Retrieval Systems 
+  2307     5.20 Dynamic Document Processing 
+  1457     5.00 Data Manipulation and Programming Problems in Automatic Informa
+   891     5.00 Everyman's Information Retrieval System 
+  2561     4.79 A Heuristic Approach to Inductive Inference in Fact Retrieval S
+  2990     4.71 Effective Information Retrieval Using Term Accuracy 
+  2631     4.71 An Information-Theoretic Approach to Text Searching in Direct A
+  1927     4.64 Information Science in a Ph.D. Computer Science Program 
+  2451     4.39 Design of Tree Structures for Efficient Querying 
+  2516     4.20 Hierarchical Storage in Information Retrieval 
+  2882     4.08 A Stochastic Evaluation Model for Database Organization in Data
+
+Smart (ntq?): 
+-------------------------
+Dtext 55 
+----
+.- --- 55 /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/test_cacm/coll/cacm.all 13741 13917
+
+.t 0 25
+
+An Algebraic Translator
+
+.a 25 36
+
+Kaner, H.
+
+Smart (ntq?): 
+-------------------------
+Qvec 
+----
+Query vector 1
+Docid	Ctype	Con	Weight		Token
+1	0	2239	 1.00000	clust
+1	0	4988	 1.00000	inform
+1	0	11065	 1.00000	retrief
+
+Smart (ntq?): Document 55 cannot be used for feedback.
+Smart (ntq?): 
+-------------------------
+Qvec 
+----
+Query vector 1
+Docid	Ctype	Con	Weight		Token
+1	0	2239	 1.00000	clust
+1	0	4988	 1.00000	inform
+1	0	11065	 1.00000	retrief
+
+Smart (ntq?): 
+-------------------------
+Top_ranked 
+----
+Qid	Rank	Did	Similarity	Useful?	Action	Iter
+1	1	1725	   3.9459	 	 	1
+1	2	3012	   3.7918	 	 	1
+1	3	2722	   3.7918	 	 	1
+1	4	2519	   3.7918	 	 	1
+1	5	2278	   3.7918	 	 	1
+1	6	1527	   3.7918	 	 	1
+1	7	2991	   3.6931	 	 	1
+1	8	2484	   3.6094	 	 	1
+1	9	2140	   3.6094	 	 	1
+1	10	1976	   3.6094	 	 	1
+1	11	1652	   3.6094	 	 	1
+1	12	2846	   3.3863	 	 	1
+1	13	2455	   3.3863	 	 	1
+1	14	2160	   3.3863	 	 	1
+1	15	1935	   3.3863	 	 	1
+1	1	3134	   6.0254	 	 	0
+1	2	1699	   5.8712	 	 	0
+1	3	1681	   5.3322	 	 	0
+1	4	2288	   5.2958	 	 	0
+1	5	1032	   5.2189	 	 	0
+1	6	2307	   5.1972	 	 	0
+1	7	1457	   4.9957	 	 	0
+1	8	891	   4.9957	 	 	0
+1	9	2561	   4.7918	 	 	0
+1	10	2990	   4.7081	 	 	0
+1	11	2631	   4.7081	 	 	0
+1	12	1927	   4.6391	 	 	0
+1	13	2451	   4.3863	 	 	0
+1	14	2516	   4.1972	 	 	0
+1	15	2882	   4.0794	 	 	0
+
+Smart (ntq?): 849 bytes written to file ./save.lnn.nnn.2
+
+Smart (ntq?): 
+-------------------------
+Dtext 73 
+----
+.- --- 73 /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/test_cacm/coll/cacm.all 19530 19672
+
+.t 0 30
+
+A Real Time Data Assimilator
+
+.a 30 47
+
+Gschwind, H. W.
+
+Smart (ntq?): 207 bytes written to file ./save.lnn.nnn.2
+
+Smart (ntq?): 
+-------------------------
+Dvec 73 
+----
+Document vector 73
+Docid	Ctype	Con	Weight		Token
+73	0	1090	 1.00000	time
+73	0	9479	 1.00000	assimil
+73	0	12056	 1.00000	gschwind, h
+73	0	16834	 1.00000	real
+73	0	17482	 1.00000	data
+
+Smart (ntq?): 
+-------------------------
+Qsim 73 
+----
+All similarities computed were 0.0
+Smart (ntq?): 
+-------------------------
+Qmatch 73 
+----
+Ctype	Con	Vec1	Vec2		Product	Token
+No matching concepts
+Smart (ntq?): 
+-------------------------
+Drun 73 
+----
+Num  Action Sim Title
+  1719     7.68 A Methodology for Calculating and Optimizing Real-Time System P
+  2838     5.89 Analysis of an Algorithm for Real Time Garbage Collection 
+  1412     5.77 The Banking Information System Concept 
+  1043     5.77 Talk-A High-Level Source Language Debugging Technique With Real
+  3151     5.71 An Optimal Real-Time Algorithm for Planar Convex Hulls 
+  2620     5.58 Execution Time Requirements for Encipherment Programs 
+  3112     5.47 List Processing in Real Time on a Serial Computer 
+  1962     5.04 GROOVE-A Program to Compose, Store, and Edit Functions of Time 
+    73     5.00 A Real Time Data Assimilator 
+  2938     5.00 Toward a Discipline of Real-Time Programming 
+  1410     4.89 Interarrival Statistics for Time Sharing Systems 
+  1677     4.79 Storage Organization in Programming Systems 
+  2406     4.77 A Data Definition and Mapping Language 
+  1679     4.71 A Fast Fourier Transform Algorithm for Real-Valued Series 
+  2765     4.64 Analysis and performance of Inverted Data Base Structures 
+
+Smart (ntq?): 
+-------------------------
+Dsim 73 55 
+----
+All similarities computed were 0.0
+Smart (ntq?): 
+-------------------------
+Qsim 55 
+----
+All similarities computed were 0.0
+Smart (ntq?): 
+-------------------------
+Dmatch 73 55 
+----
+Ctype	Con	Vec1	Vec2		Product	Token
+No matching concepts
+Smart (ntq?): 

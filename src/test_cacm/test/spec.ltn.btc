@@ -1,0 +1,7 @@
+include_file /mnt/c/users/airat/downloads/smart.exp/smart.exp/src/test_cacm/indexed/spec
+query_file query.btc
+doc_file doc.ltn
+inv_file inv.ltn
+tr_file ./tr.ltn.btc
+rr_file ./rr.ltn.btc
+run_name "Query weight == btc, Doc weight == ltn"

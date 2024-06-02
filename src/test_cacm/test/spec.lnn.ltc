@@ -1,0 +1,7 @@
+include_file /mnt/c/users/airat/downloads/smart.exp/smart.exp/src/test_cacm/indexed/spec
+query_file query.ltc
+doc_file doc.lnn
+inv_file inv.lnn
+tr_file ./tr.lnn.ltc
+rr_file ./rr.lnn.ltc
+run_name "Query weight == ltc, Doc weight == lnn"
