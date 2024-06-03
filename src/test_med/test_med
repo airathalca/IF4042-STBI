@@ -7,6 +7,7 @@ set database = $current/indexed
 #########################################################################
 # Make the adi test collection
 #########################################################################
+./make_med
 
 /bin/rm -rf test
 mkdir test
@@ -36,63 +37,37 @@ end
 
 echo "All retrieval runs completed"
 
-# Generate interactive test commands for each combination
+# Output file
+set output_file = "results.csv"
+
+# Clear the output file and add headers
+echo "Combination,Retrieved,Relevant,Rel_ret,Trunc_ret,11-pt Avg,3-pt Avg,Recall_Exact,Precision_Exact,Truncated_Precision_Exact" > $output_file
+
 foreach query_weight ($tf_weights)
   foreach doc_weight ($tf_weights)
-#     # Test 1
-#     cat > "test.commands.${doc_weight}.${query_weight}.1" << EOF
-# run
-# information retrieval and clustering
-# .
-# 3
-# save ./save.${doc_weight}.${query_weight}.1
-# EOF
+    set combination = "${doc_weight}.${query_weight}"
+    set result = `sudo $bin/smprint rr_eval spec.${doc_weight}.${query_weight}`
+    set retrieved = `echo "$result" | grep -oP 'Retrieved: \K[0-9]+'`
+    set relevant = `echo "$result" | grep -oP 'Relevant: \K[0-9]+'`
+    set rel_ret = `echo "$result" | grep -oP 'Rel_ret: \K[0-9]+'`
+    set trunc_ret = `echo "$result" | grep -oP 'Trunc_ret: \K[0-9]+'`
+    set eleven_pt_avg = `echo "$result" | grep -oP '11-pt Avg: \K[0-9.]+'`
+    set three_pt_avg = `echo "$result" | grep -oP '3-pt Avg: \K[0-9.]+'`
+    set recall_exact = `echo "$result" | grep -oP 'Recall: Exact: \K[0-9.]+'`
+    set precision_exact = `echo "$result" | grep -oP 'Precision: Exact: \K[0-9.]+' | head -1`
+    set truncated_precision_exact = `echo "$result" | grep -oP 'Truncated Precision: Exact: \K[0-9.]+' | head -1`
 
-#     # Test 2
-#     cat > "test.commands.${doc_weight}.${query_weight}.2" << EOF
-# run
-# information retrieval and clustering
-# .
-# Qvec
-# more
-# 55
-# Qv
-# feedback 55
-# Qv
-# Top
-# save ./save.${doc_weight}.${query_weight}.2
-# Dtext 73
-# save
-# Dvec 73
-# Qsim 73
-# Qmatch 73
-# Drun 73
-# Dsim 73 55
-# Qsim 55
-# Dmatch 73 55
-# EOF
-
-    # Test 3
-    cat > "test.commands.${doc_weight}.${query_weight}.3" << EOF
-Elist
-Eeval_rr
-Eeval_tr
-Ercl_prn
-Eind_rr
-Eind_tr
-El
-Euse 0
-Eqid 2
-Etr
-Qv
-Qm 12
-s save.${doc_weight}.${query_weight}.3
-Euse 1
-Eqid 2
-Qm 12
-s
-EOF
-    $bin/smart top.inter "spec.${doc_weight}.${query_weight}" spec_list "spec.${doc_weight}.${query_weight}" \
-          < "test.commands.${doc_weight}.${query_weight}.3" > "out.${doc_weight}.${query_weight}.3"
+    echo "$combination,$retrieved,$relevant,$rel_ret,$trunc_ret,$eleven_pt_avg,$three_pt_avg,$recall_exact,$precision_exact,$truncated_precision_exact" >> $output_file
   end
 end
+
+# check if it use stem or not from lib/spec.default
+set stem = `cat ../../../lib/spec.default | grep 'stem_wanted' | awk '{print $2}'`
+if ($stem == 1) then
+  set stem = "stem"
+else
+  set stem = "no_stem"
+endif
+
+# move the output file to the root directory
+mv $output_file ../../../results_cran_$stem.csv

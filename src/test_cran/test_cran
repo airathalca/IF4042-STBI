@@ -65,7 +65,7 @@ set stem = `cat ../../../lib/spec.default | grep 'stem_wanted' | awk '{print $2}
 if ($stem == 1) then
   set stem = "stem"
 else
-  set stem = "nostem"
+  set stem = "no_stem"
 endif
 
 # move the output file to the root directory
