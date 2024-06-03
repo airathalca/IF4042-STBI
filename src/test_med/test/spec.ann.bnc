@@ -1,0 +1,7 @@
+include_file /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed/spec
+query_file query.bnc
+doc_file doc.ann
+inv_file inv.ann
+tr_file ./tr.ann.bnc
+rr_file ./rr.ann.bnc
+run_name "Query weight == bnc, Doc weight == ann"

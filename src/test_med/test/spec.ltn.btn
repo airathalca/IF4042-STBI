@@ -1,0 +1,7 @@
+include_file /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed/spec
+query_file query.btn
+doc_file doc.ltn
+inv_file inv.ltn
+tr_file ./tr.ltn.btn
+rr_file ./rr.ltn.btn
+run_name "Query weight == btn, Doc weight == ltn"

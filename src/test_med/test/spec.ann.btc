@@ -1,0 +1,7 @@
+include_file /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed/spec
+query_file query.btc
+doc_file doc.ann
+inv_file inv.ann
+tr_file ./tr.ann.btc
+rr_file ./rr.ann.btc
+run_name "Query weight == btc, Doc weight == ann"
