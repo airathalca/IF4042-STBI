@@ -36,9 +36,9 @@ end
 
 echo "All retrieval runs completed"
 
-# # Generate interactive test commands for each combination
-# foreach query_weight ($tf_weights)
-#   foreach doc_weight ($tf_weights)
+# Generate interactive test commands for each combination
+foreach query_weight ($tf_weights)
+  foreach doc_weight ($tf_weights)
 #     # Test 1
 #     cat > "test.commands.${doc_weight}.${query_weight}.1" << EOF
 # run
@@ -72,30 +72,27 @@ echo "All retrieval runs completed"
 # Dmatch 73 55
 # EOF
 
-#     # Test 3
-#     cat > "test.commands.${doc_weight}.${query_weight}.3" << EOF
-# Elist
-# Eeval_rr
-# Eeval_tr
-# Ercl_prn
-# Eind_rr
-# Eind_tr
-# El
-# Euse 0
-# Eqid 2
-# Etr
-# Qv
-# Qm 12
-# s save.${doc_weight}.${query_weight}.3
-# Euse 1
-# Eqid 2
-# Qm 12
-# s
-# EOF
-
-#     foreach i (1 2 3)
-#         $bin/smart top.inter "spec.${doc_weight}.${query_weight}" spec_list "spec.${doc_weight}.${query_weight}" \
-#               < "test.commands.${doc_weight}.${query_weight}.$i" > "out.${doc_weight}.${query_weight}.$i"
-#     end
-#   end
-# end
+    # Test 3
+    cat > "test.commands.${doc_weight}.${query_weight}.3" << EOF
+Elist
+Eeval_rr
+Eeval_tr
+Ercl_prn
+Eind_rr
+Eind_tr
+El
+Euse 0
+Eqid 2
+Etr
+Qv
+Qm 12
+s save.${doc_weight}.${query_weight}.3
+Euse 1
+Eqid 2
+Qm 12
+s
+EOF
+    $bin/smart top.inter "spec.${doc_weight}.${query_weight}" spec_list "spec.${doc_weight}.${query_weight}" \
+          < "test.commands.${doc_weight}.${query_weight}.3" > "out.${doc_weight}.${query_weight}.3"
+  end
+end
