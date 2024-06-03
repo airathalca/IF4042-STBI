@@ -3,7 +3,7 @@ database                /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/in
 include_file            /mnt/c/kuliah/semester7/stbi/IF4042-STBI/lib/spec.expcoll
 doc_loc                 /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed/doc_loc
 query_loc               /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed/query_loc
-qrels_text_file         /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/coll/MED.REL
+qrels_text_file         /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/coll/qrels.text
 
 ## MED DOCDESC
 #### GENERIC PREPARSER
@@ -30,9 +30,6 @@ num_ctypes                      1
 ctype.0.name                    words
 
 ## ALTERATIONS OF STANDARD PARAMETERS
-rmode                           SRDONLY|SMMAP
-rwmode                          SRDWR|SINCORE
-rwcmode                         SRDWR|SCREATE|SINCORE
 dict_file_size                  20011
 
 ## ALTERATIONS OF STANDARD PROCEDURES

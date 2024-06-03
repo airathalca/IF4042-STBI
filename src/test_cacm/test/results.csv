@@ -1,3 +1,4 @@
+Combination,Retrieved,Relevant,Rel_ret,Trunc_ret,11-pt Avg,3-pt Avg,Recall_Exact,Precision_Exact,Truncated_Precision_Exact
 nnn.nnn,780,796,113,748,0.1824,0.1639,0.2144,0.1449,0.1694
 nnn.nnc,780,796,114,748,0.1825,0.1640,0.2165,0.1462,0.1707
 nnn.ntn,780,796,179,728,0.2719,0.2508,0.3459,0.2295,0.2714

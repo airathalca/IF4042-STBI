@@ -1,0 +1,7 @@
+include_file /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_cran/indexed/spec
+query_file query.ltc
+doc_file doc.ntc
+inv_file inv.ntc
+tr_file ./tr.ntc.ltc
+rr_file ./rr.ntc.ltc
+run_name "Query weight == ltc, Doc weight == ntc"

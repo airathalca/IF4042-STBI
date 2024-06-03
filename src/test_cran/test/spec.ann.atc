@@ -1,0 +1,7 @@
+include_file /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_cran/indexed/spec
+query_file query.atc
+doc_file doc.ann
+inv_file inv.ann
+tr_file ./tr.ann.atc
+rr_file ./rr.ann.atc
+run_name "Query weight == atc, Doc weight == ann"
