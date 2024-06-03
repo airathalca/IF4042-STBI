@@ -45,7 +45,7 @@ echo "Combination,Retrieved,Relevant,Rel_ret,Trunc_ret,11-pt Avg,3-pt Avg,Recall
 foreach query_weight ($tf_weights)
   foreach doc_weight ($tf_weights)
     set combination = "${doc_weight}.${query_weight}"
-    set result = (`sudo $bin/smprint rr_eval spec.${doc_weight}.${query_weight}`)
+    set result = `sudo $bin/smprint rr_eval spec.${doc_weight}.${query_weight}`
     set retrieved = `echo "$result" | grep -oP 'Retrieved: \K[0-9]+'`
     set relevant = `echo "$result" | grep -oP 'Relevant: \K[0-9]+'`
     set rel_ret = `echo "$result" | grep -oP 'Rel_ret: \K[0-9]+'`
