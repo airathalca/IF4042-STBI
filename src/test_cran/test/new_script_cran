@@ -13,11 +13,8 @@ output_file="results.csv"
 
 # If the output file exists, remove it. if not, create it
 if [ -f $output_file ]; then
-  rm $output_file
+  > $output_file
 fi
-
-# Clear the output file
-> $output_file
 
 # Clear the output file and add headers
 echo "Combination,Retrieved,Relevant,Rel_ret,Trunc_ret,11-pt Avg,3-pt Avg,Recall_Exact,Precision_Exact,Truncated_Precision_Exact" > $output_file
