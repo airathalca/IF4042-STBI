@@ -1,0 +1,7 @@
+include_file /home/adeliaaaa/Downloads/IF4042-STBI/src/test_npl/indexed/spec
+query_file query.btc
+doc_file doc.lnc
+inv_file inv.lnc
+tr_file ./tr.lnc.btc
+rr_file ./rr.lnc.btc
+run_name "Query weight == btc, Doc weight == lnc"

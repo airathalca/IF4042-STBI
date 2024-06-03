@@ -1,0 +1,7 @@
+include_file /home/adeliaaaa/Downloads/IF4042-STBI/src/test_npl/indexed/spec
+query_file query.btn
+doc_file doc.anc
+inv_file inv.anc
+tr_file ./tr.anc.btn
+rr_file ./rr.anc.btn
+run_name "Query weight == btn, Doc weight == anc"

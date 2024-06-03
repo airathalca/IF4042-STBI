@@ -1,0 +1,7 @@
+include_file /home/adeliaaaa/Downloads/IF4042-STBI/src/test_npl/indexed/spec
+query_file query.ltn
+doc_file doc.atn
+inv_file inv.atn
+tr_file ./tr.atn.ltn
+rr_file ./rr.atn.ltn
+run_name "Query weight == ltn, Doc weight == atn"
