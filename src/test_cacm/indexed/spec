@@ -1,9 +1,9 @@
 ## INFORMATION LOCATIONS
-database                /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/test_cacm/indexed
-include_file            /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/lib/spec.expcoll
-doc_loc                 /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/test_cacm/indexed/doc_loc
-query_loc               /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/test_cacm/indexed/query_loc
-qrels_text_file         /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/test_cacm/coll/qrels.text
+database                /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_cacm/indexed
+include_file            /mnt/c/kuliah/semester7/stbi/IF4042-STBI/lib/spec.expcoll
+doc_loc                 /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_cacm/indexed/doc_loc
+query_loc               /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_cacm/indexed/query_loc
+qrels_text_file         /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_cacm/coll/qrels.text
 
 ## CACM DOCDESC
 #### GENERIC PREPARSER

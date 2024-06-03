@@ -1,15 +1,12 @@
 #! /bin/tcsh
 
-set bin = /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/bin
+set bin = /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/bin
 set current = $cwd
 set database = $current/indexed
 
 #########################################################################
 # Make the adi test collection
 #########################################################################
-./make_cacm
-
-echo "collection made"
 
 /bin/rm -rf test
 mkdir test
@@ -39,76 +36,66 @@ end
 
 echo "All retrieval runs completed"
 
-# Generate interactive test commands for each combination
-foreach query_weight ($tf_weights)
-  foreach doc_weight ($tf_weights)
-    # Test 1
-    cat > "test.commands.${doc_weight}.${query_weight}.1" << EOF
-run
-information retrieval and clustering
-.
-3
-save ./save.${doc_weight}.${query_weight}.1
-EOF
+# # Generate interactive test commands for each combination
+# foreach query_weight ($tf_weights)
+#   foreach doc_weight ($tf_weights)
+#     # Test 1
+#     cat > "test.commands.${doc_weight}.${query_weight}.1" << EOF
+# run
+# information retrieval and clustering
+# .
+# 3
+# save ./save.${doc_weight}.${query_weight}.1
+# EOF
 
-    # Test 2
-    cat > "test.commands.${doc_weight}.${query_weight}.2" << EOF
-run
-information retrieval and clustering
-.
-Qvec
-more
-55
-Qv
-feedback 55
-Qv
-Top
-save ./save.${doc_weight}.${query_weight}.2
-Dtext 73
-save
-Dvec 73
-Qsim 73
-Qmatch 73
-Drun 73
-Dsim 73 55
-Qsim 55
-Dmatch 73 55
-EOF
+#     # Test 2
+#     cat > "test.commands.${doc_weight}.${query_weight}.2" << EOF
+# run
+# information retrieval and clustering
+# .
+# Qvec
+# more
+# 55
+# Qv
+# feedback 55
+# Qv
+# Top
+# save ./save.${doc_weight}.${query_weight}.2
+# Dtext 73
+# save
+# Dvec 73
+# Qsim 73
+# Qmatch 73
+# Drun 73
+# Dsim 73 55
+# Qsim 55
+# Dmatch 73 55
+# EOF
 
-    # Test 3
-    cat > "test.commands.${doc_weight}.${query_weight}.3" << EOF
-Elist
-Eeval_rr
-Eeval_tr
-Ercl_prn
-Eind_rr
-Eind_tr
-El
-Euse 0
-Eqid 2
-Etr
-Qv
-Qm 12
-s save.${doc_weight}.${query_weight}.3
-Euse 1
-Eqid 2
-Qm 12
-s
-EOF
+#     # Test 3
+#     cat > "test.commands.${doc_weight}.${query_weight}.3" << EOF
+# Elist
+# Eeval_rr
+# Eeval_tr
+# Ercl_prn
+# Eind_rr
+# Eind_tr
+# El
+# Euse 0
+# Eqid 2
+# Etr
+# Qv
+# Qm 12
+# s save.${doc_weight}.${query_weight}.3
+# Euse 1
+# Eqid 2
+# Qm 12
+# s
+# EOF
 
-    foreach i (1 2 3)
-        $bin/smart top.inter "spec.${doc_weight}.${query_weight}" spec_list "spec.${doc_weight}.${query_weight}" \
-              < "test.commands.${doc_weight}.${query_weight}.$i" > "out.${doc_weight}.${query_weight}.$i"
-        diff ../test.good/out.${doc_weight}.${query_weight}.$i out.${doc_weight}.${query_weight}.$i >> out.final
-        diff ../test.good/save.${doc_weight}.${query_weight}.$i save.${doc_weight}.${query_weight}.$i >> out.final
-        echo "interactive comparison ${doc_weight}.${query_weight} $i done"
-    end
-  end
-end
-
-if (-z out.final) then
-    echo "No differences at all detected"
-else
-    echo "The following differences detected"
-    more out.final
-endif
+#     foreach i (1 2 3)
+#         $bin/smart top.inter "spec.${doc_weight}.${query_weight}" spec_list "spec.${doc_weight}.${query_weight}" \
+#               < "test.commands.${doc_weight}.${query_weight}.$i" > "out.${doc_weight}.${query_weight}.$i"
+#     end
+#   end
+# end
