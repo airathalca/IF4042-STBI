@@ -13,8 +13,8 @@ LIBFILES  = inter_web.o web.o  # compare_doc.o
 
 # Flags normally set in top level makefile.  Make sure you want these
 # default if you compile locally in this directory
-PREFIX = /home/smart.exp/src
-SRCDIR = /home/smart.exp/src
+PREFIX = /mnt/c/kuliah/semester7/IF4042-STBI/src
+SRCDIR = /mnt/c/kuliah/semester7/IF4042-STBI/src
 BIN = $(PREFIX)/bin
 LIB = $(PREFIX)/lib
 H   = -I$(SRCDIR)/h

@@ -1,4 +1,4 @@
-include_file /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_cacm/indexed/spec
+include_file /mnt/c/Kuliah/Semester7/IF4042-STBI/src/test_cacm/indexed/spec
 query_file query.ann
 doc_file doc.ltn
 inv_file inv.ltn

@@ -5,9 +5,9 @@
 # set echo verbose
 
 # 
-set bin = /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/bin
-set srcdir = /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src
-set tlibdir = /mnt/c/kuliah/semester7/stbi/IF4042-STBI/lib
+set bin = /mnt/c/kuliah/semester7/IF4042-STBI/src/bin
+set srcdir = /mnt/c/kuliah/semester7/IF4042-STBI/src
+set tlibdir = /mnt/c/kuliah/semester7/IF4042-STBI/lib
 
 set current  = $srcdir/test_med
 set database = $current/indexed

@@ -16,8 +16,8 @@ LIBFILES  = exp1.o exp2.o exp3.o exp4.o
 
 # Flags normally set in top level makefile.  Make sure you want these
 # default if you compile locally in this directory
-PREFIX = /home/smart.exp/src
-SRCDIR = /home/smart.exp/src
+PREFIX = /mnt/c/kuliah/semester7/IF4042-STBI/src
+SRCDIR = /mnt/c/kuliah/semester7/IF4042-STBI/src
 BIN = $(PREFIX)/bin
 LIB = $(PREFIX)/lib
 H   = -I$(SRCDIR)/h

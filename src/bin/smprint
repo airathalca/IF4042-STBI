@@ -1,8 +1,8 @@
 #! /bin/csh
 # Print the given relation
 
-set bin = /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/bin
-set spec_file = /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/lib/spec.default
+set bin = /mnt/c/kuliah/semester7/IF4042-STBI/src/bin
+set spec_file = /mnt/c/kuliah/semester7/IF4042-STBI/lib/spec.default
 set begin_id = 0
 set end_id = 2147483647
 

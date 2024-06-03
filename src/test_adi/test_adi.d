@@ -1,6 +1,6 @@
 #! /bin/tcsh
 
-set bin = /home/smart.exp/src/bin
+set bin = /mnt/c/kuliah/semester7/IF4042-STBI/src/bin
 
 set current = $cwd
 set database = $current/indexed

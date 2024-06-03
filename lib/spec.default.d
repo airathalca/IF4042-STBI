@@ -1,4 +1,4 @@
-text_stop_file          /home/smart.exp/lib/common_words
+text_stop_file          /mnt/c/kuliah/semester7/IF4042-STBI/lib/common_words
 database                "."
 temp_dir                ""
 

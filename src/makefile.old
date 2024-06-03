@@ -25,8 +25,8 @@
 
 ACTION   = all
 
-SRCDIR = /home/smart.exp/src
-PREFIX = /home/smart.exp/src
+SRCDIR = /mnt/c/kuliah/semester7/IF4042-STBI/src
+PREFIX = /mnt/c/kuliah/semester7/IF4042-STBI/src
 
 BIN = $(PREFIX)/bin
 LIB = $(PREFIX)/lib

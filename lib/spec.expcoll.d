@@ -1,5 +1,5 @@
 # USE STANDARD DEFAULTS, EXCEPT FOR THOSE SPECIFIED IN THIS FILE
-include_file            /home/smart.exp/lib/spec.default
+include_file            /mnt/c/kuliah/semester7/IF4042-STBI/lib/spec.default
 
 # FOR SMART EXPERIMENTAL FILES, ASSUME DEFAULT SECTION IS W
 pp.default_section_name  w

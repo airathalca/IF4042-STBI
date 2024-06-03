@@ -3,15 +3,15 @@
 #  instead change ...smart/install/makebin.templ
 #############################################################################
 
-SRCDIR = /home/smart.exp/src
-INSTALLBIN = /home/smart.exp/src/bin
-INDEXED = /home/smart.exp/indexed_colls
-TLIBDIR = /home/smart.exp/lib
+SRCDIR = /mnt/c/kuliah/semester7/IF4042-STBI/src
+INSTALLBIN = /mnt/c/kuliah/semester7/IF4042-STBI/src/bin
+INDEXED = /mnt/c/kuliah/semester7/IF4042-STBI/indexed_colls
+TLIBDIR = /mnt/c/kuliah/semester7/IF4042-STBI/lib
 TMPDIR = /tmp
 
 # Flags normally set in top level makefile.  Make sure you want these
 # defaults if you compile locally in this directory
-PREFIX = /home/smart.exp/src
+PREFIX = /mnt/c/kuliah/semester7/IF4042-STBI/src
 BIN = $(PREFIX)/bin
 LIB = $(PREFIX)/lib
 H   = -I$(SRCDIR)/h

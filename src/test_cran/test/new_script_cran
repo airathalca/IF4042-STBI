@@ -6,7 +6,7 @@ IDF=("n" "t")
 Normalization=("n" "c")
 
 # Path to the folder containing the smprint executable
-path_to_folder="/mnt/c/kuliah/semester7/stbi/IF4042-STBI/src"
+path_to_folder="/mnt/c/kuliah/semester7/IF4042-STBI/src"
 
 # Output file
 output_file="results.csv"

@@ -1,9 +1,9 @@
 ## INFORMATION LOCATIONS
-database                /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed
-include_file            /mnt/c/kuliah/semester7/stbi/IF4042-STBI/lib/spec.expcoll
-doc_loc                 /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed/doc_loc
-query_loc               /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/indexed/query_loc
-qrels_text_file         /mnt/c/kuliah/semester7/stbi/IF4042-STBI/src/test_med/coll/qrels.text
+database                /mnt/c/kuliah/semester7/IF4042-STBI/src/test_med/indexed
+include_file            /mnt/c/kuliah/semester7/IF4042-STBI/lib/spec.expcoll
+doc_loc                 /mnt/c/kuliah/semester7/IF4042-STBI/src/test_med/indexed/doc_loc
+query_loc               /mnt/c/kuliah/semester7/IF4042-STBI/src/test_med/indexed/query_loc
+qrels_text_file         /mnt/c/kuliah/semester7/IF4042-STBI/src/test_med/coll/qrels.text
 
 ## MED DOCDESC
 #### GENERIC PREPARSER

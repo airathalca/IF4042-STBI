@@ -5,9 +5,9 @@
 # set echo verbose
 
 # 
-set bin = /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src/bin
-set srcdir = /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/src
-set tlibdir = /mnt/c/users/airat/downloads/SMART.EXP/smart.exp/lib
+set bin = /mnt/c/kuliah/semester7/IF4042-STBI/src/bin
+set srcdir = /mnt/c/kuliah/semester7/IF4042-STBI/src
+set tlibdir = /mnt/c/kuliah/semester7/IF4042-STBI/lib
 
 set current  = $srcdir/test_adi
 set database = $current/indexed
