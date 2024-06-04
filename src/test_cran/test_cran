@@ -4,10 +4,6 @@ set bin = /mnt/c/kuliah/semester7/IF4042-STBI/src/bin
 set current = $cwd
 set database = $current/indexed
 
-#########################################################################
-# Make the adi test collection
-#########################################################################
-
 /bin/rm -rf test
 mkdir test
 cd test

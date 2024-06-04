@@ -66,7 +66,7 @@ index.section.name      none
 index.section.ctype     -1
 method                  index.parse_sect.none
 token_to_con            index.token_to_con.dict
-stem_wanted             1
+stem_wanted             0
 stemmer                 index.stem.triestem
 stopword_wanted         1
 stopword                index.stop.stop_dict
