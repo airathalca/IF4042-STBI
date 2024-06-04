@@ -1,0 +1,75 @@
+#! /bin/tcsh
+
+set bin = /home/adeliaaaa/Downloads/IF4042-STBI/src/bin
+set current = $cwd
+set database = $current/indexed
+
+#########################################################################
+# Make the time test collection
+#########################################################################
+
+/bin/rm -rf test
+mkdir test
+cd test
+
+# Function to generate weight strings for tf and idf
+set tf_weights = ("nnn" "nnc" "ntc" "ntn" "lnn" "ltn" "ltc" "lnc" "bnn" "btc" "btn" "bnc" "atc" "atn" "anc" "ann")
+
+# Function to generate all combinations
+foreach query_weight ($tf_weights)
+    foreach doc_weight ($tf_weights)
+        cat > "spec.${doc_weight}.${query_weight}" << EOF
+include_file $database/spec
+query_file query.${query_weight}
+doc_file doc.${doc_weight}
+inv_file inv.${doc_weight}
+tr_file ./tr.${doc_weight}.${query_weight}
+rr_file ./rr.${doc_weight}.${query_weight}
+run_name "Query weight == ${query_weight}, Doc weight == ${doc_weight}"
+EOF
+
+        # Perform the retrieval run
+        $bin/smart retrieve "spec.${doc_weight}.${query_weight}"
+        echo "retrieval run ${doc_weight}.${query_weight} done"
+    end
+end
+
+# Echo when all retrieval runs are completed
+echo "All retrieval runs completed"
+
+# Output file
+set output_file = "results.csv"
+
+# Clear the output file and add headers
+echo "Combination,Retrieved,Relevant,Rel_ret,Trunc_ret,11-pt Avg,3-pt Avg,Recall_Exact,Precision_Exact,Truncated_Precision_Exact" > $output_file
+
+# Iterate over all combinations to fill the output file
+foreach query_weight ($tf_weights)
+    foreach doc_weight ($tf_weights)
+        set combination = "${doc_weight}.${query_weight}"
+
+        set result = `sudo $bin/smprint rr_eval spec.${doc_weight}.${query_weight}`
+        set retrieved = `echo "$result" | grep -oP 'Retrieved: \K[0-9]+'`
+        set relevant = `echo "$result" | grep -oP 'Relevant: \K[0-9]+'`
+        set rel_ret = `echo "$result" | grep -oP 'Rel_ret: \K[0-9]+'`
+        set trunc_ret = `echo "$result" | grep -oP 'Trunc_ret: \K[0-9]+'`
+        set eleven_pt_avg = `echo "$result" | grep -oP '11-pt Avg: \K[0-9.]+'`
+        set three_pt_avg = `echo "$result" | grep -oP '3-pt Avg: \K[0-9.]+'`
+        set recall_exact = `echo "$result" | grep -oP 'Recall: Exact: \K[0-9.]+'`
+        set precision_exact = `echo "$result" | grep -oP 'Precision: Exact: \K[0-9.]+' | head -1`
+        set truncated_precision_exact = `echo "$result" | grep -oP 'Truncated Precision: Exact: \K[0-9.]+' | head -1`
+
+        echo "$combination,$retrieved,$relevant,$rel_ret,$trunc_ret,$eleven_pt_avg,$three_pt_avg,$recall_exact,$precision_exact,$truncated_precision_exact" >> $output_file
+    end
+end
+
+# Check if it use stem or not from lib/spec.default
+set stem = `cat ../../../lib/spec.default | grep 'stem_wanted' | awk '{print $2}'`
+if ($stem == 1) then
+    set stem = "stem"
+else
+    set stem = "no_stem"
+endif
+
+# Move the output file to the root directory
+mv $output_file ../../../results_time_$stem.csv

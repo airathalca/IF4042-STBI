@@ -1,0 +1,195 @@
+#! /bin/tcsh
+# Make the cacm time collection.  Change first 4 pathnames as appropriate.
+# time collection obtainable in ~ftp/pub/smart/time on  ftp.cs.cornell.edu
+
+# set echo verbose
+
+# 
+set bin = /home/adeliaaaa/Downloads/IF4042-STBI/src/bin
+set srcdir = /home/adeliaaaa/Downloads/IF4042-STBI/src
+set tlibdir = /home/adeliaaaa/Downloads/IF4042-STBI/lib
+
+set current  = $srcdir/test_time
+set database = $current/indexed
+set coll     = $current/coll
+set doc_loc  = $coll/npl.all
+set query_loc = $coll/query.text
+
+# create the empty collection
+/bin/rm -rf $database
+mkdir $database
+
+cat > $database/spec << EOF1
+## INFORMATION LOCATIONS
+database                $database
+include_file            $tlibdir/spec.expcoll
+doc_loc                 $database/doc_loc
+query_loc               $database/query_loc
+qrels_text_file         $coll/qrels.text
+
+## TIME DOCDESC
+#### GENERIC PREPARSER
+num_pp_sections                 3
+pp_section.0.string             ".I"
+pp_section.0.action             discard
+pp_section.0.oneline_flag       true
+pp_section.0.newdoc_flag        true
+pp_section.1.string             ".W"
+pp_section.1.section_name       w
+pp_section.2.string             ".O"
+pp_section.2.action             discard
+
+#### DESCRIPTION OF PARSE INPUT
+index.num_sections              1
+index.section.0.name            w
+index.section.0.method          index.parse_sect.full
+index.section.0.word.ctype      0
+index.section.0.proper.ctype    0
+title_section                   0
+
+#### DESCRIPTION OF FINAL VECTORS
+num_ctypes                      1
+ctype.0.name                    words
+
+## ALTERATIONS OF STANDARD PARAMETERS
+dict_file_size                  20011
+
+## ALTERATIONS OF STANDARD PROCEDURES
+EOF1
+
+echo Creating new database at `date`
+# Copy auxiliary files to collection
+echo "$doc_loc" > $database/doc_loc
+echo "$query_loc" > $database/query_loc
+
+#index the collection
+#echo Indexing docs,queries,rels at `date`
+$bin/smart exp_coll $database/spec
+
+# Create nnn versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.nnn   query_weight nnn
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.nnn   doc_weight nnn
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.nnn  out inv.nnn
+
+# Create ntc versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.ntc   query_weight ntc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.ntc   doc_weight ntc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.ntc  out inv.ntc
+
+# Create nnc versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.nnc   query_weight nnc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.nnc   doc_weight nnc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.nnc  out inv.nnc
+
+# Create ntn versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.ntn   query_weight ntn
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.ntn   doc_weight ntn
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.ntn  out inv.ntn
+
+# Create atc (a tf*idf variant) versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.atc   query_weight atc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                   in doc.nnn  out doc.atc   doc_weight atc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                   in doc.atc  out inv.atc
+
+# Create anc versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.anc   query_weight anc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.anc   doc_weight anc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.anc  out inv.anc
+
+# Create atn versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.atn   query_weight atn
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.atn   doc_weight atn
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.atn  out inv.atn
+
+# Create ann versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.ann   query_weight ann
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.ann   doc_weight ann
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.ann  out inv.ann
+
+# Create ltc versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.ltc   query_weight ltc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.ltc   doc_weight ltc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.ltc  out inv.ltc
+
+# Create lnc versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.lnc   query_weight lnc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.lnc   doc_weight lnc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.lnc  out inv.lnc
+
+# Create ltn versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.ltn   query_weight ltn
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.ltn   doc_weight ltn
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.ltn  out inv.ltn
+
+# Create lnn versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.lnn   query_weight lnn
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.lnn   doc_weight lnn
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.lnn  out inv.lnn
+
+# Create bnn versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.bnn   query_weight bnn
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.bnn   doc_weight bnn
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.bnn  out inv.bnn
+
+# Create btn versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.btn   query_weight btn
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.btn   doc_weight btn
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.btn  out inv.btn
+
+# Create btc versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.btc   query_weight btc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.btc   doc_weight btc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.btc  out inv.btc
+
+# Create bnc versions of docs and queries
+$bin/smart convert $database/spec   proc convert.obj.weight_query \
+                   in query.nnn  out query.bnc   query_weight bnc
+$bin/smart convert $database/spec   proc convert.obj.weight_doc \
+                    in doc.nnn  out doc.bnc   doc_weight bnc
+$bin/smart convert $database/spec   proc convert.obj.vec_aux  \
+                    in doc.bnc  out inv.bnc
