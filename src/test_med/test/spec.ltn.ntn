@@ -1,4 +1,4 @@
-include_file /mnt/c/Kuliah/Semester7/IF4042-STBI/src/test_med/indexed/spec
+include_file /home/adeliaaaa/Downloads/IF4042-STBI/src/test_med/indexed/spec
 query_file query.ntn
 doc_file doc.ltn
 inv_file inv.ltn
